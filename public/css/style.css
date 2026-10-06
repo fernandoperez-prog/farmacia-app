@@ -1,0 +1,6 @@
+body { background: #f6f8fb; }
+.brand { color: #ffc107 !important; font-weight: 600; }
+.tabla-lab thead { background: #d1f2fa; }
+.tabla-lab thead th { border-bottom: 2px solid #000; }
+.menu-card { transition: transform .15s, box-shadow .15s; }
+.menu-card:hover { transform: translateY(-4px); box-shadow: 0 .5rem 1rem rgba(0,0,0,.15); }

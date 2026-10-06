@@ -1,0 +1,81 @@
+<%- include('partials/header') %>
+<div class="d-flex justify-content-between align-items-center mb-3">
+  <h4 class="mb-0">Medicamentos</h4>
+  <div class="d-flex gap-2">
+    <input type="search" id="buscar" class="form-control" placeholder="Buscar...">
+    <button class="btn btn-danger solo-escritura text-nowrap" id="btnNuevo">Nuevo Medicamento</button>
+  </div>
+</div>
+<div class="table-responsive">
+<table class="table table-hover tabla-lab">
+  <thead>
+    <tr><th>Cód.</th><th>Descripción</th><th>Tipo</th><th>Marca</th><th>Present.</th><th>Stock</th>
+        <th>P. Unit.</th><th>P. Pres.</th><th>Vence</th><th>Acciones</th></tr>
+  </thead>
+  <tbody id="tbody"></tbody>
+</table>
+</div>
+
+<div class="modal fade" id="modal" tabindex="-1">
+  <div class="modal-dialog modal-lg">
+    <form class="modal-content" id="form" novalidate>
+      <div class="modal-header bg-primary text-white">
+        <h5 class="modal-title" id="modalTitulo">Nuevo Medicamento</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <input type="hidden" id="id">
+        <div class="row g-3">
+          <div class="col-md-8">
+            <label class="form-label">Descripción</label>
+            <input type="text" id="descripcionMed" class="form-control" required maxlength="150">
+            <div class="invalid-feedback">Obligatorio.</div>
+          </div>
+          <div class="col-md-4">
+            <label class="form-label">Tipo</label>
+            <select id="CodTipoMed" class="form-select" required></select>
+            <div class="invalid-feedback">Selecciona un tipo.</div>
+          </div>
+          <div class="col-md-4">
+            <label class="form-label">Marca</label>
+            <input type="text" id="Marca" class="form-control" maxlength="60">
+          </div>
+          <div class="col-md-4">
+            <label class="form-label">Presentación</label>
+            <input type="text" id="Presentacion" class="form-control" maxlength="60">
+          </div>
+          <div class="col-md-4">
+            <label class="form-label">Stock</label>
+            <input type="number" id="stock" class="form-control" min="0" step="1" required>
+            <div class="invalid-feedback">Ingresa un entero ≥ 0.</div>
+          </div>
+          <div class="col-md-3">
+            <label class="form-label">Precio unitario</label>
+            <input type="number" id="precioVentaUni" class="form-control" min="0" step="0.01" required>
+            <div class="invalid-feedback">Precio inválido.</div>
+          </div>
+          <div class="col-md-3">
+            <label class="form-label">Precio presentación</label>
+            <input type="number" id="precioVentaPres" class="form-control" min="0" step="0.01" required>
+            <div class="invalid-feedback">Precio inválido.</div>
+          </div>
+          <div class="col-md-3">
+            <label class="form-label">Fecha fabricación</label>
+            <input type="date" id="fechaFabricacion" class="form-control" required>
+            <div class="invalid-feedback">Obligatoria.</div>
+          </div>
+          <div class="col-md-3">
+            <label class="form-label">Fecha vencimiento</label>
+            <input type="date" id="fechaVencimiento" class="form-control" required>
+            <div class="invalid-feedback">Debe ser posterior a la fabricación.</div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary">Guardar</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+      </div>
+    </form>
+  </div>
+</div>
+<%- include('partials/footer', { script: 'medicamentos' }) %>
